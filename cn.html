@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My HTML Content</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <h1>My Stored Content</h1>
+    <p>ECHO CLIENT Q))
+
+const net = require('net');
+const server = net.createServer((socket) => {
+console.log('Connection Established');
+socket.on('data', (data) => {
+console.log('Client said:', data.toString());
+socket.write(data.toString());
+});
+socket.on('close', () => {
+console.log('Connection closed');
+});
+});
+server.listen(4550, '127.0.0.1', () => {
+console.log('Server is listening on 127.0.0.1:4550');
+});
+CLIENT
+const net = require('net');
+const readline = require('readline');
+const client = new net.Socket();
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+});
+client.connect(4550, '127.0.0.1', () => {
+console.log('Connection Established');
+rl.question('Enter the data: ', (input) => {
+client.write(input);
+});
+});
+client.on('data', (data) => {
+console.log('FROM SERVER:', data.toString());
+console.log('Echo Received');
+client.end();
+rl.close();
+});
+client.on('close', () => {
+console.log('Connection closed');
+});
+-----------
+const net = require('net');
+const server = net.createServer((socket) => {
+console.log('Connection Established');
+socket.on('data', (data) => {
+console.log('Client said:', data.toString());
+socket.write(data.toString());
+});
+socket.on('close', () => {
+console.log('Connection closed');
+});
+});
+server.listen(4550, '127.0.0.1', () => {
+console.log('Server is listening on 127.0.0.1:4550');
+});
+CLIENT
+const net = require('net');
+const readline = require('readline');
+const client = new net.Socket();
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+});
+client.connect(4550, '127.0.0.1', () => {
+console.log('Connection Established');
+rl.question('Enter the data: ', (input) => {
+client.write(input);
+});
+});
+client.on('data', (data) => {
+console.log('FROM SERVER:', data.toString());
+console.log('Echo Received');
+client.end();
+rl.close();
+});
+client.on('close', () => {
+console.log('Connection closed');
+});
+---------
+SERVER
+const net = require('net');
+const readline = require('readline');
+const server = net.createServer((socket) => {
+console.log('Client Connected');
+socket.on('data', (data) => {
+console.log('Msg from client:', data.toString());
+});
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+})
+rl.on('line', (input) => {
+socket.write(input);
+});
+socket.on('close', () => {
+console.log('Client Disconnected');
+rl.close();
+});
+});
+server.listen(3128, 'localhost', () => {
+console.log('Server Started on port 3128');
+});
+CLIENT
+const net = require('net');
+const readline = require('readline');
+const client = new net.Socket();
+client.connect(3128, 'localhost', () => {
+console.log('Connected to server');
+});
+client.on('data', (data) => {
+console.log('Msg from server:', data.toString());
+});
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+});
+rl.on('line', (input) => {
+client.write(input);
+});
+client.on('close', () => {
+console.log('Connection closed');
+rl.close();
+});
+SAMPLE OUTPUT:
+SERVE.</p> 
+
+</body>
+</html> w
